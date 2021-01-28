@@ -1,3 +1,4 @@
+//Detecting button click
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i < numberOfDrumButtons; i++) {
@@ -6,8 +7,19 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
 		var buttonInnerHTML = this.innerHTML;
 
+		makeSound(buttonInnerHTML);
+		
+	});
 
-		switch (buttonInnerHTML) {
+}
+
+//Detecting keyboard press
+document.addEventListener("keydown", function(event) {
+		makeSound(event.key);
+});
+
+function makeSound(key) {
+	switch (key) {
 
 			case "w":
 				var tom1 = new Audio('sounds/tom-1.mp3');
@@ -40,15 +52,12 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 				//kick drum doesn't work on firefox, lol
 
 
-
-
 			default: console.log(buttonInnerHTML);
 
+			
+
 		}
-	});
-
 }
-
 
 // var audio = new Audio('sounds/tom-1.mp3');
 // 		audio.play();
